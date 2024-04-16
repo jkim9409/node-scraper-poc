@@ -12,9 +12,9 @@ on:
 #     branches: main
 
 # concurrency will check if any dulpicated task is running and cancel the task 
-concurrency:
-  group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
-  cancel-in-progress: true
+# concurrency:
+#   group: '${{ github.workflow }} @ ${{ github.event.pull_request.head.label || github.head_ref || github.ref }}'
+#   cancel-in-progress: true
 
 jobs:
   aws-deployment:
