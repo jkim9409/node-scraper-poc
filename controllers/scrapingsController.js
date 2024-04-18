@@ -6,20 +6,20 @@ const getScrapings = async (req, res) => {
     // logger.info("Fetching scrapings...");
 
     // Extract the URL to scrape from query parameters
-    const { url } = req.query;
-
-    
-
-
+    const {url,scrollDown,hasAttribute,actions,targetInfos,unittype,servicename,servicever} = req.body;
+ 
+    console.log("newRequest")
     if (!url) {
         return res.status(400).send({ error: 'URL parameter is required.' });
     }
 
     try {
         // Use the scraping service to perform the scraping
-        const data = await performScraping(url);
+        const data = await performScraping(url,scrollDown,hasAttribute,actions,targetInfos,unittype,servicename,servicever);
         // console.log(`[${req.id}] Scraping completed for URL: ${url}`);
-        
+
+        console.log("Response")
+
         // Respond with the scraped data
         res.status(200).send(data);
     } catch (error) {
