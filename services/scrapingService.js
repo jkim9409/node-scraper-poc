@@ -4,7 +4,7 @@ const pagePoolManager = require('../utils/pagePoolManager');
 async function performScraping(url,scrollDown,hasAttribute,actions,targetInfos,unittype,servicename,servicever) {
     // Placeholder: Imagine this function scrapes data from the provided URL
 
-    console.log(`Scraping data from ${url}...`);
+    // console.log(`Scraping data from ${url}...`);
     const page = pagePoolManager.getPage();
     if (!page) {
         console.error("No available page instances. The system is currently at capacity.");
@@ -15,21 +15,21 @@ async function performScraping(url,scrollDown,hasAttribute,actions,targetInfos,u
     try {
         await page.goto(url, { waitUntil: 'networkidle2' }); // Navigate to the URL
         
-        console.log("negivating to page")
+        // console.log("negivating to page")
         // Placeholder for scraping logic
         let data = 'Content not found';
         
         // await new Promise(resolve => setTimeout(resolve, 5000));
         // Example: Scraping the entire page's outer HTML
         data = await page.evaluate(() => document.documentElement.outerHTML);
-        console.log("scraping finished")
+        // console.log("scraping finished")
         // Remember to release the page back to the pool once you're done
         pagePoolManager.releasePage(page);
         // Return scraped data
         // await new Promise(resolve => setTimeout(resolve, 5000));
         return { url, data };
     } catch (error) {
-        console.log(`Error scraping ${url}:`, error);
+        // console.log(`Error scraping ${url}:`, error);
         
         // In case of an error, make sure to release the page back to the pool
         pagePoolManager.releasePage(page);

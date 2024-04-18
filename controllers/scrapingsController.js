@@ -18,12 +18,12 @@ const getScrapings = async (req, res) => {
     try {
         // Use the scraping service to perform the scraping
         const data = await performScraping(url);
-        console.log(`[${req.id}] Scraping completed for URL: ${url}`);
+        // console.log(`[${req.id}] Scraping completed for URL: ${url}`);
         
         // Respond with the scraped data
         res.status(200).send(data);
     } catch (error) {
-        console.log(`[${req.id}] Error during scraping: ${error.message}`);
+        // console.log(`[${req.id}] Error during scraping: ${error.message}`);
         res.status(500).send({ error: 'Error during scraping' });
     }
 
