@@ -8,7 +8,7 @@ async function initPuppeteer() {
         browser = await puppeteer.launch({
             // headless: false, // Uncomment if you want to see the browser UI
             // Production 에선 풀어주기
-            // executablePath: '/usr/bin/chromium-browser',
+            executablePath: '/usr/bin/chromium-browser',
             args: [
                 '--no-sandbox',
                 '--disable-setuid-sandbox',
