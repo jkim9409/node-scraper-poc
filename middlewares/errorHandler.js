@@ -1,6 +1,6 @@
 const errorHandler = (err, req, res, next) => {
   // Log the error
-  console.log(`[${req.id}] ${err.status || 500} - ${err.message} - ${req.originalUrl} - ${req.method} - ${req.ip}`);
+  // console.log(`[${req.id}] ${err.status || 500} - ${err.message} - ${req.originalUrl} - ${req.method} - ${req.ip}`);
 
   // set locals, only providing error in development
   res.locals.message = err.message;

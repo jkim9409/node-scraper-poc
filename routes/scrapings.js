@@ -4,7 +4,7 @@ const { scrapingsController } = require('../controllers');
 
 /* GET scrapings listing. */
 
-router.get('/', scrapingsController.getScrapings);
+router.post('/', scrapingsController.getScrapings);
 
 
 module.exports = router;

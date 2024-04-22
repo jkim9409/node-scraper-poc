@@ -1,7 +1,7 @@
 const { getBrowserInstance } = require('./puppeteerBrowser');
 
 class PagePoolManager {
-    constructor(poolSize = 10) {
+    constructor(poolSize = 5) {
         this.poolSize = poolSize;
         this.pages = [];
         this.isInitialized = false;
@@ -28,23 +28,30 @@ class PagePoolManager {
     }
 
     getPage() {
-        console.log("getPage called")
+        // console.log("getPage called")
         if (!this.isInitialized) {
             throw new Error("Page pool manager is not initialized.");
         }
 
         if (this.pages.length > 0) {
-            console.log("[pageslength: ]")
-            console.log(this.pages.length)
+            // console.log("[pageslength: ]")
+            // console.log(this.pages.length)
+            // console.log("getPage")
             return this.pages.shift(); // Get a page from the pool
         } else {
             return null; // Indicate no pages are available
         }
     }
 
-    releasePage(page) {
-        console.log("releasePage called")
-        this.pages.push(page); // Return the page to the pool
+    async releasePage(page) {
+        try {
+            await page.goto('about:blank'); // Clears the page content
+            // console.log("releasePage")
+            this.pages.push(page); // Return the page to the pool
+        } catch (error) {
+            console.error("Failed to release page, removing from pool:", error);
+            page.close(); // Close the problematic page
+        }
     }
 }
 
