@@ -22,7 +22,7 @@ async function performScraping(url,scrollDown,hasAttribute,actions,targetInfos,u
         // await page.goto(url, { waitUntil: 'networkidle2' }); // Navigate to the URL
 
         // can be faster
-        console.log("Scraping start....")
+        // console.log("Scraping start....")
         await page.goto(url, { waitUntil: 'domcontentloaded' }); // Navigate to the URL
         
 
@@ -41,7 +41,7 @@ async function performScraping(url,scrollDown,hasAttribute,actions,targetInfos,u
         data = await page.evaluate(el => el.outerHTML, elementHandle);
         await elementHandle.dispose();
         
-        console.log("Scraping finished....")
+        // console.log("Scraping finished....")
         // console.log("scraping finished")
         // Remember to release the page back to the pool once you're done
         pagePoolManager.releasePage(page);
