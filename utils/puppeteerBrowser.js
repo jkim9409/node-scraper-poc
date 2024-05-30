@@ -25,6 +25,7 @@ async function initPuppeteer() {
 async function closePuppeteer() {
     if (browser) {
         await browser.close();
+        
         log.info('Puppeteer browser closed successfully.');
 
     }
